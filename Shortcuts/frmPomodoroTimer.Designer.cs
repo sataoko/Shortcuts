@@ -41,6 +41,11 @@
             this.picClose = new System.Windows.Forms.PictureBox();
             this.btnTest = new System.Windows.Forms.Button();
             this.lblPomoCount = new System.Windows.Forms.Label();
+            this.txtBlockNote = new System.Windows.Forms.TextBox();
+            this.cbBlockGroup = new System.Windows.Forms.ComboBox();
+            this.sevenSegmentArray1 = new Shortcuts.SevenSegmentArray();
+            this.sevenSegmentArray2 = new Shortcuts.SevenSegmentArray();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +57,11 @@
             // lblRemainingTime
             // 
             this.lblRemainingTime.AutoSize = true;
-            this.lblRemainingTime.Font = new System.Drawing.Font("TR Arial Black", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRemainingTime.Font = new System.Drawing.Font("TR Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblRemainingTime.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblRemainingTime.Location = new System.Drawing.Point(166, 154);
+            this.lblRemainingTime.Location = new System.Drawing.Point(587, 77);
             this.lblRemainingTime.Name = "lblRemainingTime";
-            this.lblRemainingTime.Size = new System.Drawing.Size(345, 136);
+            this.lblRemainingTime.Size = new System.Drawing.Size(48, 18);
             this.lblRemainingTime.TabIndex = 1;
             this.lblRemainingTime.Text = "00:00";
             this.lblRemainingTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -151,18 +156,90 @@
             this.btnTest.TabIndex = 3;
             this.btnTest.Text = "test";
             this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Visible = false;
             this.btnTest.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblPomoCount
             // 
             this.lblPomoCount.AutoSize = true;
             this.lblPomoCount.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblPomoCount.Location = new System.Drawing.Point(321, 340);
+            this.lblPomoCount.Location = new System.Drawing.Point(166, 347);
             this.lblPomoCount.Name = "lblPomoCount";
             this.lblPomoCount.Size = new System.Drawing.Size(22, 21);
             this.lblPomoCount.TabIndex = 4;
             this.lblPomoCount.Text = "...";
             this.lblPomoCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtBlockNote
+            // 
+            this.txtBlockNote.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtBlockNote.Location = new System.Drawing.Point(53, 104);
+            this.txtBlockNote.Multiline = true;
+            this.txtBlockNote.Name = "txtBlockNote";
+            this.txtBlockNote.Size = new System.Drawing.Size(582, 72);
+            this.txtBlockNote.TabIndex = 5;
+            this.txtBlockNote.Text = "ne yaptın?";
+            // 
+            // cbBlockGroup
+            // 
+            this.cbBlockGroup.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cbBlockGroup.FormattingEnabled = true;
+            this.cbBlockGroup.Items.AddRange(new object[] {
+            "GENEL",
+            "TeklifTakip",
+            "Shortcuts",
+            "Kinect",
+            "ImageProcessing"});
+            this.cbBlockGroup.Location = new System.Drawing.Point(53, 77);
+            this.cbBlockGroup.Name = "cbBlockGroup";
+            this.cbBlockGroup.Size = new System.Drawing.Size(121, 23);
+            this.cbBlockGroup.TabIndex = 6;
+            this.cbBlockGroup.Text = "GENEL";
+            // 
+            // sevenSegmentArray1
+            // 
+            this.sevenSegmentArray1.ArrayCount = 2;
+            this.sevenSegmentArray1.ColorBackground = System.Drawing.Color.White;
+            this.sevenSegmentArray1.ColorDark = System.Drawing.Color.White;
+            this.sevenSegmentArray1.ColorLight = System.Drawing.Color.Blue;
+            this.sevenSegmentArray1.DecimalShow = true;
+            this.sevenSegmentArray1.ElementPadding = new System.Windows.Forms.Padding(4);
+            this.sevenSegmentArray1.ElementWidth = 10;
+            this.sevenSegmentArray1.ItalicFactor = 0F;
+            this.sevenSegmentArray1.Location = new System.Drawing.Point(148, 182);
+            this.sevenSegmentArray1.Name = "sevenSegmentArray1";
+            this.sevenSegmentArray1.Size = new System.Drawing.Size(195, 145);
+            this.sevenSegmentArray1.TabIndex = 7;
+            this.sevenSegmentArray1.TabStop = false;
+            this.sevenSegmentArray1.Value = "0000";
+            // 
+            // sevenSegmentArray2
+            // 
+            this.sevenSegmentArray2.ArrayCount = 2;
+            this.sevenSegmentArray2.ColorBackground = System.Drawing.Color.White;
+            this.sevenSegmentArray2.ColorDark = System.Drawing.Color.White;
+            this.sevenSegmentArray2.ColorLight = System.Drawing.Color.RoyalBlue;
+            this.sevenSegmentArray2.DecimalShow = true;
+            this.sevenSegmentArray2.ElementPadding = new System.Windows.Forms.Padding(4);
+            this.sevenSegmentArray2.ElementWidth = 10;
+            this.sevenSegmentArray2.ItalicFactor = 0F;
+            this.sevenSegmentArray2.Location = new System.Drawing.Point(374, 182);
+            this.sevenSegmentArray2.Name = "sevenSegmentArray2";
+            this.sevenSegmentArray2.Size = new System.Drawing.Size(195, 145);
+            this.sevenSegmentArray2.TabIndex = 7;
+            this.sevenSegmentArray2.TabStop = false;
+            this.sevenSegmentArray2.Value = "0000";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTotal.Location = new System.Drawing.Point(465, 347);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(22, 21);
+            this.lblTotal.TabIndex = 4;
+            this.lblTotal.Text = "...";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmPomodoroTimer
             // 
@@ -170,6 +247,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(694, 458);
+            this.Controls.Add(this.sevenSegmentArray2);
+            this.Controls.Add(this.sevenSegmentArray1);
+            this.Controls.Add(this.cbBlockGroup);
+            this.Controls.Add(this.txtBlockNote);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblPomoCount);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.picClose);
@@ -206,5 +288,10 @@
         private System.Windows.Forms.PictureBox picClose;
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Label lblPomoCount;
+        private System.Windows.Forms.TextBox txtBlockNote;
+        private System.Windows.Forms.ComboBox cbBlockGroup;
+        private SevenSegmentArray sevenSegmentArray1;
+        private SevenSegmentArray sevenSegmentArray2;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

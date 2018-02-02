@@ -10,33 +10,35 @@ using System.Windows.Forms;
 
 namespace Shortcuts
 {
-   
-
-
     public partial class frmPomodoroTimer : FormBase
     {
         int _counter = 0;
         int _pomoCount = 0;
+        BsonValue _lastLogId = 0;
 
-        private void ShowTime(int timeInSeconds)
+        int _duration = 1800;
+
+        private string ShowTime(int timeInSeconds)
         {
             TimeSpan t = TimeSpan.FromSeconds(timeInSeconds);
+
+            sevenSegmentArray1.Value = t.Minutes.ToString();
+            sevenSegmentArray2.Value = t.Seconds.ToString();
             string str = string.Format("{1:D2}:{2:D2}",
                             t.Hours,
                             t.Minutes,
                             t.Seconds,
                             t.Milliseconds);
-            lblRemainingTime.Text = str;
-            this.Text = str;
+            return str;
+
         }
 
         private void SetTime(int timeInSeconds)
         {
             timer1.Enabled = false;
             _counter = timeInSeconds;
-            ShowTime(timeInSeconds);
+            sevenSegmentArray1.Value =  lblRemainingTime.Text =  ShowTime(timeInSeconds);
             timer1.Enabled = true;
-
         }
 
         private void ResetPomodore()
@@ -47,20 +49,13 @@ namespace Shortcuts
 
         private void TimeIsUpSound()
         {
-            // string filePath = System.IO.Path.GetPathRoot(Environment.SystemDirectory) + @"\Windows\Media\windows proximity notification.wav";
             string filePath = Application.StartupPath + "\\timeisup.wav";
             if (System.IO.File.Exists(filePath))
             {
                 System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer(filePath);
                 simpleSound.Play();
-                /* System.Threading.Thread.Sleep(1500);
-                 simpleSound.Play();
-                 System.Threading.Thread.Sleep(1500);
-                 simpleSound.Play();
-                 System.Threading.Thread.Sleep(1500);*/
             }
         }
-
 
         public frmPomodoroTimer()
         {
@@ -71,9 +66,26 @@ namespace Shortcuts
         {
             if (_counter == 0)
             {
-                SetTime(1500);
+                SetTime(_duration);
                 _pomoCount++;
                 lblPomoCount.Text = _pomoCount.ToString();
+                lblTotal.Text =" Total:"+ShowTime(_pomoCount*_duration);
+                LogStart();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            _counter--;
+            if (_counter < 0)
+            {
+                ResetPomodore();
+                LogEnd();
+                TimeIsUpSound();
+            }
+            else
+            {
+                lblRemainingTime.Text = ShowTime(_counter);
             }
         }
 
@@ -83,6 +95,38 @@ namespace Shortcuts
             using (System.IO.StreamWriter sw = System.IO.File.AppendText(path))
             {
                 sw.WriteLine(DateTime.Now.ToString() + "," + message + ", pomo count:" + _pomoCount.ToString());
+            }
+        }
+
+        private void LogStart()
+        {
+            using (var db = new LiteDatabase(Application.StartupPath + "\\ShortcutsData.db"))
+            {
+                var col = db.GetCollection<WorkBlock>("WorkBlock");
+                var workBlock = new WorkBlock
+                {
+                    BlockStartTime = DateTime.Now,
+                    BlockNo = _pomoCount,
+                    BlockGroup = cbBlockGroup.Text
+                };
+                 _lastLogId =  col.Insert(workBlock);
+            }
+        }
+
+        private void LogEnd()
+        {
+            if (_lastLogId != 0)
+            {
+                using (var db = new LiteDatabase(Application.StartupPath + "\\ShortcutsData.db"))
+                {
+                    // Get a collection (or create, if doesn't exist)
+                    var col = db.GetCollection<WorkBlock>("WorkBlock");
+                    var workBlock = col.FindById(_lastLogId);
+                    workBlock.BlockNote = txtBlockNote.Text;
+                    workBlock.BlockEndTime = DateTime.Now;
+                    col.Update(workBlock);
+                    _lastLogId = 0;
+                }
             }
         }
 
@@ -96,16 +140,7 @@ namespace Shortcuts
             if (_counter == 0) SetTime(600);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            _counter--;
-            if (_counter < 0)
-            {
-                ResetPomodore();
-                TimeIsUpSound();
-            }
-            else ShowTime(_counter);
-        }
+        
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -135,49 +170,16 @@ namespace Shortcuts
         private void button1_Click(object sender, EventArgs e)
         {
             //TimeIsUpSound();
-
-            // Open database (or create if doesn't exist)
-            using (var db = new LiteDatabase(@"C:\Temp\MyData.db"))
-            {
-                // Get a collection (or create, if doesn't exist)
-                var col = db.GetCollection<Customer>("customers");
-
-                // Create your new customer instance
-                var customer = new Customer
-                {
-                    Name = "John Doe",
-                    Phones = new string[] { "8000-0000", "9000-0000" },
-                    IsActive = true
-                };
-
-                // Insert new customer document (Id will be auto-incremented)
-                col.Insert(customer);
-
-                // Update a document inside a collection
-                customer.Name = "Joana Doe";
-
-                col.Update(customer);
-
-                // Index document using document Name property
-                col.EnsureIndex(x => x.Name);
-
-                // Use LINQ to query documents
-                var results = col.Find(x => x.Name.StartsWith("Jo"));
-
-                
-                // Let's create an index in phone numbers (using expression). It's a multikey index
-                col.EnsureIndex(x => x.Phones, "$.Phones[*]");
-
-                // and now we can query phones
-                var r = col.FindOne(x => x.Phones.Contains("8888-5555"));
-            }
-
-
+            if(_lastLogId==0)
+            LogStart();
+            else
+                LogEnd();
         }
 
         private void frmPomodoroTimer_FormClosing(object sender, FormClosingEventArgs e)
         {
             Log("STOP");
+            LogEnd();
         }
     }
 }

@@ -76,9 +76,16 @@
     <Compile Include="App_Code\Ruler.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="App_Code\SevenSegment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="App_Code\SevenSegmentArray.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="App_Code\Shortcut.cs" />
     <Compile Include="App_Code\ShortcutOperations.cs" />
     <Compile Include="App_Code\SystemInfo.cs" />
+    <Compile Include="App_Code\WorkBlock.cs" />
     <Compile Include="FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
