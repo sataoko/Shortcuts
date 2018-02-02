@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Shortcuts>
+  <ShortCut>
+    <ID>-8589259416834774036</ID>
+    <FilePath>http://mail.yahoo.com</FilePath>
+    <Alias>mail.yahoo.com</Alias>
+    <OrderNo>18</OrderNo>
+  </ShortCut>
+  <ShortCut>
+    <ID>-8589256999383865477</ID>
+    <FilePath>http://www.facebook.com</FilePath>
+    <Alias>Facebook</Alias>
+    <OrderNo>17</OrderNo>
+  </ShortCut>
+  <ShortCut>
+    <ID>-8589256951887136452</ID>
+    <FilePath>http://www.gmail.com</FilePath>
+    <Alias>Gmail</Alias>
+    <OrderNo>16</OrderNo>
+  </ShortCut>
+  <ShortCut>
+    <ID>-8589254314538080107</ID>
+    <FilePath>http://www.cssbeauty.com/gallery/</FilePath>
+    <Alias>CSS Beauty</Alias>
+    <OrderNo>19</OrderNo>
+  </ShortCut>
+  <ShortCut>
+    <ID>-8587378714088860291</ID>
+    <FilePath>C:\Dropbox\__SOFTWARE</FilePath>
+    <Alias>__SOFTWARE</Alias>
+    <OrderNo>24</OrderNo>
+  </ShortCut>
+  <ShortCut>
+    <ID>-8587378688848849734</ID>
+    <FilePath>G:\VideoWorks</FilePath>
+    <Alias>VideoWorks</Alias>
+    <OrderNo>25</OrderNo>
+  </ShortCut>
+  <ShortCut>
+    <ID>-8587375257762074109</ID>
+    <FilePath>C:\Dropbox\__SOFTWARE\C#.NET\C# Projects\MyBrowser\MyBrowser\bin\Debug</FilePath>
+    <Alias>MyBrowser</Alias>
+    <OrderNo>26</OrderNo>
+  </ShortCut>
+  <ShortCut>
+    <ID>-8587350021550627799</ID>
+    <FilePath>C:\YandexDisk\WebWorksActive\YascaBox</FilePath>
+    <Alias>YascaBox</Alias>
+    <OrderNo>28</OrderNo>
+  </ShortCut>
+  <ShortCut>
+    <ID>-8587190107130023077</ID>
+    <FilePath>C:\YandexDisk\WebWorksActive</FilePath>
+    <Alias>WebWorksActive</Alias>
+    <OrderNo>31</OrderNo>
+  </ShortCut>
+  <ShortCut>
+    <ID>-8587170954251779265</ID>
+    <FilePath>H:\Pictures\SVSProducts</FilePath>
+    <Alias>SVSProducts</Alias>
+    <OrderNo>32</OrderNo>
+  </ShortCut>
+</Shortcuts>
