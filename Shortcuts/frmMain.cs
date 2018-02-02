@@ -824,8 +824,7 @@ namespace Shortcuts
         #region RUN PROCESS VIA ICONS
         private void picRunMyComputer_Click(object sender, EventArgs e)
         {
-            string myComputerPath = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
-            System.Diagnostics.Process.Start("explorer", "/root,");
+            RunProcess("explorer",true, "/root,");
         }
 
         private void picRunDesktop_Click(object sender, EventArgs e)
