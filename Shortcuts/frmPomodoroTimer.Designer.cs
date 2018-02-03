@@ -46,6 +46,7 @@
             this.sevenSegmentArray1 = new Shortcuts.SevenSegmentArray();
             this.sevenSegmentArray2 = new Shortcuts.SevenSegmentArray();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.lblColon = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,9 +58,10 @@
             // lblRemainingTime
             // 
             this.lblRemainingTime.AutoSize = true;
+            this.lblRemainingTime.BackColor = System.Drawing.Color.Transparent;
             this.lblRemainingTime.Font = new System.Drawing.Font("TR Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblRemainingTime.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblRemainingTime.Location = new System.Drawing.Point(587, 77);
+            this.lblRemainingTime.Location = new System.Drawing.Point(592, 80);
             this.lblRemainingTime.Name = "lblRemainingTime";
             this.lblRemainingTime.Size = new System.Drawing.Size(48, 18);
             this.lblRemainingTime.TabIndex = 1;
@@ -70,7 +72,7 @@
             // 
             this.btnReset.BackColor = System.Drawing.Color.Linen;
             this.btnReset.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnReset.Location = new System.Drawing.Point(408, 396);
+            this.btnReset.Location = new System.Drawing.Point(411, 438);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(121, 50);
             this.btnReset.TabIndex = 0;
@@ -83,7 +85,7 @@
             this.btnPause.BackColor = System.Drawing.Color.Tomato;
             this.btnPause.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnPause.ForeColor = System.Drawing.Color.White;
-            this.btnPause.Location = new System.Drawing.Point(281, 396);
+            this.btnPause.Location = new System.Drawing.Point(284, 438);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(121, 50);
             this.btnPause.TabIndex = 0;
@@ -93,13 +95,16 @@
             // 
             // btnLongBreak
             // 
+            this.btnLongBreak.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnLongBreak.FlatAppearance.BorderSize = 0;
             this.btnLongBreak.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnLongBreak.Location = new System.Drawing.Point(445, 26);
+            this.btnLongBreak.ForeColor = System.Drawing.Color.White;
+            this.btnLongBreak.Location = new System.Drawing.Point(450, 21);
             this.btnLongBreak.Name = "btnLongBreak";
             this.btnLongBreak.Size = new System.Drawing.Size(190, 36);
             this.btnLongBreak.TabIndex = 0;
             this.btnLongBreak.Text = "Long Break";
-            this.btnLongBreak.UseVisualStyleBackColor = true;
+            this.btnLongBreak.UseVisualStyleBackColor = false;
             this.btnLongBreak.Click += new System.EventHandler(this.btnLongBreak_Click);
             // 
             // btnStart
@@ -107,7 +112,7 @@
             this.btnStart.BackColor = System.Drawing.Color.OliveDrab;
             this.btnStart.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(154, 396);
+            this.btnStart.Location = new System.Drawing.Point(157, 438);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(121, 50);
             this.btnStart.TabIndex = 0;
@@ -117,31 +122,36 @@
             // 
             // btnShortBreak
             // 
+            this.btnShortBreak.BackColor = System.Drawing.Color.SteelBlue;
             this.btnShortBreak.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnShortBreak.Location = new System.Drawing.Point(249, 26);
+            this.btnShortBreak.ForeColor = System.Drawing.Color.White;
+            this.btnShortBreak.Location = new System.Drawing.Point(254, 21);
             this.btnShortBreak.Name = "btnShortBreak";
             this.btnShortBreak.Size = new System.Drawing.Size(190, 36);
             this.btnShortBreak.TabIndex = 0;
             this.btnShortBreak.Text = "Short Break";
-            this.btnShortBreak.UseVisualStyleBackColor = true;
+            this.btnShortBreak.UseVisualStyleBackColor = false;
             this.btnShortBreak.Click += new System.EventHandler(this.btnShortBreak_Click);
             // 
             // btnPomodoro
             // 
+            this.btnPomodoro.BackColor = System.Drawing.Color.SteelBlue;
             this.btnPomodoro.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnPomodoro.Location = new System.Drawing.Point(53, 26);
+            this.btnPomodoro.ForeColor = System.Drawing.Color.White;
+            this.btnPomodoro.Location = new System.Drawing.Point(58, 21);
             this.btnPomodoro.Name = "btnPomodoro";
             this.btnPomodoro.Size = new System.Drawing.Size(190, 36);
             this.btnPomodoro.TabIndex = 0;
             this.btnPomodoro.Text = "Pomodoro";
-            this.btnPomodoro.UseVisualStyleBackColor = true;
+            this.btnPomodoro.UseVisualStyleBackColor = false;
             this.btnPomodoro.Click += new System.EventHandler(this.btnPomodoro_Click);
             // 
             // picClose
             // 
+            this.picClose.BackColor = System.Drawing.Color.Transparent;
             this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::Shortcuts.Properties.Resources.picClose;
-            this.picClose.Location = new System.Drawing.Point(630, 396);
+            this.picClose.Image = global::Shortcuts.Properties.Resources.close_big;
+            this.picClose.Location = new System.Drawing.Point(636, 438);
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(52, 50);
             this.picClose.TabIndex = 2;
@@ -150,7 +160,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(27, 411);
+            this.btnTest.Location = new System.Drawing.Point(12, 465);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 3;
@@ -162,8 +172,9 @@
             // lblPomoCount
             // 
             this.lblPomoCount.AutoSize = true;
+            this.lblPomoCount.BackColor = System.Drawing.Color.Transparent;
             this.lblPomoCount.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblPomoCount.Location = new System.Drawing.Point(166, 347);
+            this.lblPomoCount.Location = new System.Drawing.Point(346, 350);
             this.lblPomoCount.Name = "lblPomoCount";
             this.lblPomoCount.Size = new System.Drawing.Size(22, 21);
             this.lblPomoCount.TabIndex = 4;
@@ -173,10 +184,10 @@
             // txtBlockNote
             // 
             this.txtBlockNote.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtBlockNote.Location = new System.Drawing.Point(53, 104);
+            this.txtBlockNote.Location = new System.Drawing.Point(58, 107);
             this.txtBlockNote.Multiline = true;
             this.txtBlockNote.Name = "txtBlockNote";
-            this.txtBlockNote.Size = new System.Drawing.Size(582, 72);
+            this.txtBlockNote.Size = new System.Drawing.Size(582, 56);
             this.txtBlockNote.TabIndex = 5;
             this.txtBlockNote.Text = "ne yaptın?";
             // 
@@ -190,7 +201,7 @@
             "Shortcuts",
             "Kinect",
             "ImageProcessing"});
-            this.cbBlockGroup.Location = new System.Drawing.Point(53, 77);
+            this.cbBlockGroup.Location = new System.Drawing.Point(58, 80);
             this.cbBlockGroup.Name = "cbBlockGroup";
             this.cbBlockGroup.Size = new System.Drawing.Size(121, 23);
             this.cbBlockGroup.TabIndex = 6;
@@ -199,6 +210,7 @@
             // sevenSegmentArray1
             // 
             this.sevenSegmentArray1.ArrayCount = 2;
+            this.sevenSegmentArray1.BackColor = System.Drawing.Color.Transparent;
             this.sevenSegmentArray1.ColorBackground = System.Drawing.Color.White;
             this.sevenSegmentArray1.ColorDark = System.Drawing.Color.White;
             this.sevenSegmentArray1.ColorLight = System.Drawing.Color.Blue;
@@ -206,7 +218,7 @@
             this.sevenSegmentArray1.ElementPadding = new System.Windows.Forms.Padding(4);
             this.sevenSegmentArray1.ElementWidth = 10;
             this.sevenSegmentArray1.ItalicFactor = 0F;
-            this.sevenSegmentArray1.Location = new System.Drawing.Point(148, 182);
+            this.sevenSegmentArray1.Location = new System.Drawing.Point(124, 193);
             this.sevenSegmentArray1.Name = "sevenSegmentArray1";
             this.sevenSegmentArray1.Size = new System.Drawing.Size(195, 145);
             this.sevenSegmentArray1.TabIndex = 7;
@@ -216,14 +228,15 @@
             // sevenSegmentArray2
             // 
             this.sevenSegmentArray2.ArrayCount = 2;
+            this.sevenSegmentArray2.BackColor = System.Drawing.Color.Transparent;
             this.sevenSegmentArray2.ColorBackground = System.Drawing.Color.White;
             this.sevenSegmentArray2.ColorDark = System.Drawing.Color.White;
-            this.sevenSegmentArray2.ColorLight = System.Drawing.Color.RoyalBlue;
+            this.sevenSegmentArray2.ColorLight = System.Drawing.Color.Blue;
             this.sevenSegmentArray2.DecimalShow = true;
             this.sevenSegmentArray2.ElementPadding = new System.Windows.Forms.Padding(4);
             this.sevenSegmentArray2.ElementWidth = 10;
             this.sevenSegmentArray2.ItalicFactor = 0F;
-            this.sevenSegmentArray2.Location = new System.Drawing.Point(374, 182);
+            this.sevenSegmentArray2.Location = new System.Drawing.Point(395, 193);
             this.sevenSegmentArray2.Name = "sevenSegmentArray2";
             this.sevenSegmentArray2.Size = new System.Drawing.Size(195, 145);
             this.sevenSegmentArray2.TabIndex = 7;
@@ -233,20 +246,34 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
+            this.lblTotal.BackColor = System.Drawing.Color.Transparent;
             this.lblTotal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTotal.Location = new System.Drawing.Point(465, 347);
+            this.lblTotal.Location = new System.Drawing.Point(346, 395);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(22, 21);
             this.lblTotal.TabIndex = 4;
             this.lblTotal.Text = "...";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblColon
+            // 
+            this.lblColon.AutoSize = true;
+            this.lblColon.BackColor = System.Drawing.Color.Transparent;
+            this.lblColon.Font = new System.Drawing.Font("TR Arial Black", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblColon.ForeColor = System.Drawing.Color.Black;
+            this.lblColon.Location = new System.Drawing.Point(318, 190);
+            this.lblColon.Name = "lblColon";
+            this.lblColon.Size = new System.Drawing.Size(89, 136);
+            this.lblColon.TabIndex = 1;
+            this.lblColon.Text = ":";
+            this.lblColon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmPomodoroTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(694, 458);
+            this.ClientSize = new System.Drawing.Size(700, 500);
             this.Controls.Add(this.sevenSegmentArray2);
             this.Controls.Add(this.sevenSegmentArray1);
             this.Controls.Add(this.cbBlockGroup);
@@ -255,6 +282,7 @@
             this.Controls.Add(this.lblPomoCount);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.picClose);
+            this.Controls.Add(this.lblColon);
             this.Controls.Add(this.lblRemainingTime);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnPause);
@@ -293,5 +321,6 @@
         private SevenSegmentArray sevenSegmentArray1;
         private SevenSegmentArray sevenSegmentArray2;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblColon;
     }
 }

@@ -83,6 +83,16 @@ namespace Shortcuts.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_big {
+            get {
+                object obj = ResourceManager.GetObject("close_big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap closeRed {
             get {
                 object obj = ResourceManager.GetObject("closeRed", resourceCulture);

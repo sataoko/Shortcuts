@@ -22,15 +22,14 @@ namespace Shortcuts
         {
             TimeSpan t = TimeSpan.FromSeconds(timeInSeconds);
 
-            sevenSegmentArray1.Value = t.Minutes.ToString();
-            sevenSegmentArray2.Value = t.Seconds.ToString();
+            sevenSegmentArray1.Value = string.Format("{0:D2}",t.Minutes);
+            sevenSegmentArray2.Value = string.Format("{0:D2}", t.Seconds);
             string str = string.Format("{1:D2}:{2:D2}",
                             t.Hours,
                             t.Minutes,
                             t.Seconds,
                             t.Milliseconds);
             return str;
-
         }
 
         private void SetTime(int timeInSeconds)
@@ -69,7 +68,7 @@ namespace Shortcuts
                 SetTime(_duration);
                 _pomoCount++;
                 lblPomoCount.Text = _pomoCount.ToString();
-                lblTotal.Text =" Total:"+ShowTime(_pomoCount*_duration);
+                lblTotal.Text =" Total Time: "+ShowTime(_pomoCount*_duration);
                 LogStart();
             }
         }
