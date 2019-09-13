@@ -13,7 +13,7 @@ namespace Shortcuts
     public partial class frmPomodoroTimer : FormBase
     {
         int _counter = 0;
-        int _pomoCount = 0;
+        int _blockCount = 0;
         BsonValue _lastLogId = 0;
 
         int _duration = 1800;
@@ -32,11 +32,21 @@ namespace Shortcuts
             return str;
         }
 
+        private void ShowTotalTime()
+        {
+            TimeSpan t= TimeSpan.FromSeconds(_blockCount * _duration);
+            txtTotalTime.Text = " Total Time: " + string.Format("{0:D2}:{1:D2}",
+                            t.Hours,
+                            t.Minutes,
+                            t.Seconds,
+                            t.Milliseconds);
+        }
+
         private void SetTime(int timeInSeconds)
         {
             timer1.Enabled = false;
             _counter = timeInSeconds;
-            sevenSegmentArray1.Value =  lblRemainingTime.Text =  ShowTime(timeInSeconds);
+            sevenSegmentArray1.Value = ShowTime(timeInSeconds);
             timer1.Enabled = true;
         }
 
@@ -48,7 +58,9 @@ namespace Shortcuts
 
         private void TimeIsUpSound()
         {
-            string filePath = Application.StartupPath + "\\timeisup.wav";
+            Random r = new Random();
+            int i = r.Next(16);
+            string filePath = Application.StartupPath + "\\sounds\\timeisup"+i.ToString()+".wav";
             if (System.IO.File.Exists(filePath))
             {
                 System.Media.SoundPlayer simpleSound = new System.Media.SoundPlayer(filePath);
@@ -66,9 +78,8 @@ namespace Shortcuts
             if (_counter == 0)
             {
                 SetTime(_duration);
-                _pomoCount++;
-                lblPomoCount.Text = _pomoCount.ToString();
-                lblTotal.Text =" Total Time: "+ShowTime(_pomoCount*_duration);
+                _blockCount++;
+                lblPomoCount.Text = _blockCount.ToString();
                 LogStart();
             }
         }
@@ -78,13 +89,14 @@ namespace Shortcuts
             _counter--;
             if (_counter < 0)
             {
+                ShowTotalTime();
                 ResetPomodore();
                 LogEnd();
                 TimeIsUpSound();
             }
             else
             {
-                lblRemainingTime.Text = ShowTime(_counter);
+                this.Text = ShowTime(_counter);
             }
         }
 
@@ -93,19 +105,19 @@ namespace Shortcuts
             string path = Application.StartupPath + "\\PomodoreLogs.txt";
             using (System.IO.StreamWriter sw = System.IO.File.AppendText(path))
             {
-                sw.WriteLine(DateTime.Now.ToString() + "," + message + ", pomo count:" + _pomoCount.ToString());
+                sw.WriteLine(DateTime.Now.ToString() + "," + message + ", pomo count:" + _blockCount.ToString());
             }
         }
 
         private void LogStart()
         {
-            using (var db = new LiteDatabase(Application.StartupPath + "\\ShortcutsData.db"))
+            using (var db = new LiteDatabase(Application.StartupPath + "\\Data.db"))
             {
                 var col = db.GetCollection<WorkBlock>("WorkBlock");
                 var workBlock = new WorkBlock
                 {
                     BlockStartTime = DateTime.Now,
-                    BlockNo = _pomoCount,
+                    BlockNo = _blockCount,
                     BlockGroup = cbBlockGroup.Text
                 };
                  _lastLogId =  col.Insert(workBlock);
@@ -116,7 +128,7 @@ namespace Shortcuts
         {
             if (_lastLogId != 0)
             {
-                using (var db = new LiteDatabase(Application.StartupPath + "\\ShortcutsData.db"))
+                using (var db = new LiteDatabase(Application.StartupPath + "\\Data.db"))
                 {
                     // Get a collection (or create, if doesn't exist)
                     var col = db.GetCollection<WorkBlock>("WorkBlock");
@@ -138,8 +150,6 @@ namespace Shortcuts
         {
             if (_counter == 0) SetTime(600);
         }
-
-        
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -163,22 +173,35 @@ namespace Shortcuts
 
         private void frmPomodoroTimer_Load(object sender, EventArgs e)
         {
+            string path = Application.StartupPath + "\\Works.txt";
+            if (System.IO.File.Exists(path))
+            {
+                string[] lines = System.IO.File.ReadAllLines(path, Encoding.UTF8);
+                cbBlockGroup.Items.Clear();
+                foreach (string line in lines)
+                    cbBlockGroup.Items.Add(line);
+            }
+
             Log("START");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //TimeIsUpSound();
-            if(_lastLogId==0)
-            LogStart();
-            else
-                LogEnd();
+            _blockCount = 5;
+            ShowTotalTime();
         }
 
         private void frmPomodoroTimer_FormClosing(object sender, FormClosingEventArgs e)
         {
             Log("STOP");
             LogEnd();
+        }
+
+        private void lblShowWorkHours_Click(object sender, EventArgs e)
+        {
+            WorkHours.frmWorkHours x = new WorkHours.frmWorkHours();
+            x.Show();
         }
     }
 }

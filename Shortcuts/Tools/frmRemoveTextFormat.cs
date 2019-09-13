@@ -26,6 +26,7 @@ namespace Shortcuts
         private void btnCopyToClipboard_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(textBox1.Text, TextDataFormat.Text);
+            if(chkCloseAfterCopyToClipboard.Checked)
             this.Close();
         }
 
@@ -38,6 +39,11 @@ namespace Shortcuts
         {
             GetClipboardText();
 
+        }
+
+        private void lnkClearTextbox_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            textBox1.Clear();
         }
     }
 }

@@ -101,10 +101,10 @@
     <Compile Include="frmAccounts.Designer.cs">
       <DependentUpon>frmAccounts.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmExchangeRatesCalculator.cs">
+    <Compile Include="Tools\frmExchangeRatesCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmExchangeRatesCalculator.designer.cs">
+    <Compile Include="Tools\frmExchangeRatesCalculator.designer.cs">
       <DependentUpon>frmExchangeRatesCalculator.cs</DependentUpon>
     </Compile>
     <Compile Include="frmIntro.cs">
@@ -125,10 +125,10 @@
     <Compile Include="frmNewShortcut.Designer.cs">
       <DependentUpon>frmNewShortcut.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRemoveTextFormat.cs">
+    <Compile Include="Tools\frmRemoveTextFormat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRemoveTextFormat.Designer.cs">
+    <Compile Include="Tools\frmRemoveTextFormat.Designer.cs">
       <DependentUpon>frmRemoveTextFormat.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSettings.cs">
@@ -137,16 +137,16 @@
     <Compile Include="frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSystemInfo.cs">
+    <Compile Include="Tools\frmSystemInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSystemInfo.Designer.cs">
+    <Compile Include="Tools\frmSystemInfo.Designer.cs">
       <DependentUpon>frmSystemInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPomodoroTimer.cs">
+    <Compile Include="WorkHours\frmPomodoroTimer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPomodoroTimer.Designer.cs">
+    <Compile Include="WorkHours\frmPomodoroTimer.Designer.cs">
       <DependentUpon>frmPomodoroTimer.cs</DependentUpon>
     </Compile>
     <Compile Include="frmUpdateShortcut.cs">
@@ -157,6 +157,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkHours\frmWorkHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkHours\frmWorkHours.Designer.cs">
+      <DependentUpon>frmWorkHours.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="App_Code\Ruler.resx" />
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
@@ -167,7 +173,7 @@
     <EmbeddedResource Include="frmAccounts.resx">
       <DependentUpon>frmAccounts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmExchangeRatesCalculator.resx">
+    <EmbeddedResource Include="Tools\frmExchangeRatesCalculator.resx">
       <DependentUpon>frmExchangeRatesCalculator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIntro.resx">
@@ -181,16 +187,16 @@
       <DependentUpon>frmNewShortcut.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRemoveTextFormat.resx">
+    <EmbeddedResource Include="Tools\frmRemoveTextFormat.resx">
       <DependentUpon>frmRemoveTextFormat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSystemInfo.resx">
+    <EmbeddedResource Include="Tools\frmSystemInfo.resx">
       <DependentUpon>frmSystemInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPomodoroTimer.resx">
+    <EmbeddedResource Include="WorkHours\frmPomodoroTimer.resx">
       <DependentUpon>frmPomodoroTimer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdateShortcut.resx">
@@ -206,6 +212,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WorkHours\frmWorkHours.resx">
+      <DependentUpon>frmWorkHours.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -237,6 +246,8 @@
   <ItemGroup>
     <Content Include="agt_add-to-autorun.ico" />
     <Content Include="bookmark copy.ico" />
+    <None Include="Resources\cDrive1.png" />
+    <None Include="Resources\cDrive.png" />
     <None Include="Resources\close_big.png" />
     <None Include="Resources\picClose.bmp" />
     <None Include="Resources\paint.png" />

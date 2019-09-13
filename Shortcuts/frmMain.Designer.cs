@@ -46,6 +46,7 @@
             this.cmiDeviceManager = new System.Windows.Forms.ToolStripMenuItem();
             this.cmiDiskManager = new System.Windows.Forms.ToolStripMenuItem();
             this.cmiServices = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiControlPanel = new System.Windows.Forms.ToolStripMenuItem();
             this.cmiTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmTomatoTimer = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmScreenRuler = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,7 +92,8 @@
             this.picRunDesktop = new System.Windows.Forms.PictureBox();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.picRunMyComputer = new System.Windows.Forms.PictureBox();
-            this.cmiControlPanel = new System.Windows.Forms.ToolStripMenuItem();
+            this.trvShortcuts3 = new Shortcuts.FlickerFreeTreeView();
+            this.picC_Drive = new System.Windows.Forms.PictureBox();
             this.cmsIconRightClick.SuspendLayout();
             this.cmsRightSide.SuspendLayout();
             this.cmsLeftSide.SuspendLayout();
@@ -104,6 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picRunDesktop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRunMyComputer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picC_Drive)).BeginInit();
             this.SuspendLayout();
             // 
             // ımageList1
@@ -244,6 +247,13 @@
             this.cmiServices.Size = new System.Drawing.Size(255, 22);
             this.cmiServices.Text = "Services";
             this.cmiServices.Click += new System.EventHandler(this.cmiServices_Click);
+            // 
+            // cmiControlPanel
+            // 
+            this.cmiControlPanel.Name = "cmiControlPanel";
+            this.cmiControlPanel.Size = new System.Drawing.Size(255, 22);
+            this.cmiControlPanel.Text = "Control Panel";
+            this.cmiControlPanel.Click += new System.EventHandler(this.cmiControlPanel_Click);
             // 
             // cmiTools
             // 
@@ -497,7 +507,7 @@
             // trvShortcuts2
             // 
             this.trvShortcuts2.AllowDrop = true;
-            this.trvShortcuts2.BackColor = System.Drawing.Color.AliceBlue;
+            this.trvShortcuts2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.trvShortcuts2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.trvShortcuts2.ContextMenuStrip = this.cmsRightSide;
             this.trvShortcuts2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -520,7 +530,7 @@
             // trvShortcuts
             // 
             this.trvShortcuts.AllowDrop = true;
-            this.trvShortcuts.BackColor = System.Drawing.Color.AliceBlue;
+            this.trvShortcuts.BackColor = System.Drawing.Color.Navy;
             this.trvShortcuts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.trvShortcuts.ContextMenuStrip = this.cmsLeftSide;
             this.trvShortcuts.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -534,7 +544,7 @@
             this.trvShortcuts.Location = new System.Drawing.Point(2, 26);
             this.trvShortcuts.Name = "trvShortcuts";
             this.trvShortcuts.SelectedImageIndex = 7;
-            this.trvShortcuts.Size = new System.Drawing.Size(188, 321);
+            this.trvShortcuts.Size = new System.Drawing.Size(185, 321);
             this.trvShortcuts.TabIndex = 2;
             this.trvShortcuts.TabStop = false;
             this.trvShortcuts.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvShortcuts_ItemDrag);
@@ -545,7 +555,7 @@
             // 
             this.picCommandPrompt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picCommandPrompt.Image = global::Shortcuts.Properties.Resources.commandline;
-            this.picCommandPrompt.Location = new System.Drawing.Point(344, 369);
+            this.picCommandPrompt.Location = new System.Drawing.Point(445, 368);
             this.picCommandPrompt.Name = "picCommandPrompt";
             this.picCommandPrompt.Size = new System.Drawing.Size(24, 24);
             this.picCommandPrompt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -557,7 +567,7 @@
             // 
             this.picDownloads.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picDownloads.Image = global::Shortcuts.Properties.Resources.download;
-            this.picDownloads.Location = new System.Drawing.Point(7, 369);
+            this.picDownloads.Location = new System.Drawing.Point(108, 368);
             this.picDownloads.Name = "picDownloads";
             this.picDownloads.Size = new System.Drawing.Size(24, 24);
             this.picDownloads.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -569,7 +579,7 @@
             // 
             this.picRunCalculator.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picRunCalculator.Image = ((System.Drawing.Image)(resources.GetObject("picRunCalculator.Image")));
-            this.picRunCalculator.Location = new System.Drawing.Point(33, 369);
+            this.picRunCalculator.Location = new System.Drawing.Point(134, 368);
             this.picRunCalculator.Name = "picRunCalculator";
             this.picRunCalculator.Size = new System.Drawing.Size(24, 24);
             this.picRunCalculator.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -581,7 +591,7 @@
             // 
             this.picSnippingTool.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picSnippingTool.Image = global::Shortcuts.Properties.Resources.crop;
-            this.picSnippingTool.Location = new System.Drawing.Point(285, 369);
+            this.picSnippingTool.Location = new System.Drawing.Point(386, 368);
             this.picSnippingTool.Name = "picSnippingTool";
             this.picSnippingTool.Size = new System.Drawing.Size(24, 24);
             this.picSnippingTool.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -593,7 +603,7 @@
             // 
             this.picNetwork.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picNetwork.Image = global::Shortcuts.Properties.Resources.network;
-            this.picNetwork.Location = new System.Drawing.Point(314, 369);
+            this.picNetwork.Location = new System.Drawing.Point(415, 368);
             this.picNetwork.Name = "picNetwork";
             this.picNetwork.Size = new System.Drawing.Size(24, 24);
             this.picNetwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -605,7 +615,7 @@
             // 
             this.picRunPBrush.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picRunPBrush.Image = global::Shortcuts.Properties.Resources.paint;
-            this.picRunPBrush.Location = new System.Drawing.Point(59, 369);
+            this.picRunPBrush.Location = new System.Drawing.Point(160, 368);
             this.picRunPBrush.Name = "picRunPBrush";
             this.picRunPBrush.Size = new System.Drawing.Size(24, 24);
             this.picRunPBrush.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -617,7 +627,7 @@
             // 
             this.picRunDesktop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picRunDesktop.Image = ((System.Drawing.Image)(resources.GetObject("picRunDesktop.Image")));
-            this.picRunDesktop.Location = new System.Drawing.Point(195, 366);
+            this.picRunDesktop.Location = new System.Drawing.Point(296, 365);
             this.picRunDesktop.Name = "picRunDesktop";
             this.picRunDesktop.Size = new System.Drawing.Size(24, 24);
             this.picRunDesktop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -630,7 +640,7 @@
             this.picClose.BackColor = System.Drawing.Color.Transparent;
             this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picClose.Image = ((System.Drawing.Image)(resources.GetObject("picClose.Image")));
-            this.picClose.Location = new System.Drawing.Point(353, 3);
+            this.picClose.Location = new System.Drawing.Point(543, 1);
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(24, 24);
             this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -642,7 +652,7 @@
             // 
             this.picRunMyComputer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picRunMyComputer.Image = ((System.Drawing.Image)(resources.GetObject("picRunMyComputer.Image")));
-            this.picRunMyComputer.Location = new System.Drawing.Point(160, 368);
+            this.picRunMyComputer.Location = new System.Drawing.Point(261, 367);
             this.picRunMyComputer.Name = "picRunMyComputer";
             this.picRunMyComputer.Size = new System.Drawing.Size(22, 22);
             this.picRunMyComputer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -650,20 +660,45 @@
             this.picRunMyComputer.TabStop = false;
             this.picRunMyComputer.Click += new System.EventHandler(this.picRunMyComputer_Click);
             // 
-            // cmiControlPanel
+            // trvShortcuts3
             // 
-            this.cmiControlPanel.Name = "cmiControlPanel";
-            this.cmiControlPanel.Size = new System.Drawing.Size(255, 22);
-            this.cmiControlPanel.Text = "Control Panel";
-            this.cmiControlPanel.Click += new System.EventHandler(this.cmiControlPanel_Click);
+            this.trvShortcuts3.AllowDrop = true;
+            this.trvShortcuts3.BackColor = System.Drawing.Color.DodgerBlue;
+            this.trvShortcuts3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.trvShortcuts3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.trvShortcuts3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.trvShortcuts3.Indent = 19;
+            this.trvShortcuts3.ItemHeight = 18;
+            this.trvShortcuts3.LineColor = System.Drawing.Color.Lavender;
+            this.trvShortcuts3.Location = new System.Drawing.Point(382, 26);
+            this.trvShortcuts3.Name = "trvShortcuts3";
+            this.trvShortcuts3.Size = new System.Drawing.Size(185, 321);
+            this.trvShortcuts3.TabIndex = 2;
+            this.trvShortcuts3.TabStop = false;
+            this.trvShortcuts3.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvShortcuts2_ItemDrag);
+            this.trvShortcuts3.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvShortcuts2_NodeMouseClick);
+            this.trvShortcuts3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvShortcuts2_MouseDoubleClick);
+            // 
+            // picC_Drive
+            // 
+            this.picC_Drive.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picC_Drive.Image = global::Shortcuts.Properties.Resources.cDrive1;
+            this.picC_Drive.Location = new System.Drawing.Point(6, 368);
+            this.picC_Drive.Name = "picC_Drive";
+            this.picC_Drive.Size = new System.Drawing.Size(24, 24);
+            this.picC_Drive.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picC_Drive.TabIndex = 13;
+            this.picC_Drive.TabStop = false;
+            this.picC_Drive.Click += new System.EventHandler(this.picC_Drive_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(379, 398);
+            this.ClientSize = new System.Drawing.Size(569, 398);
             this.Controls.Add(this.picCommandPrompt);
+            this.Controls.Add(this.picC_Drive);
             this.Controls.Add(this.picDownloads);
             this.Controls.Add(this.picRunCalculator);
             this.Controls.Add(this.picSnippingTool);
@@ -672,6 +707,7 @@
             this.Controls.Add(this.picRunMyComputer);
             this.Controls.Add(this.picRunDesktop);
             this.Controls.Add(this.picClose);
+            this.Controls.Add(this.trvShortcuts3);
             this.Controls.Add(this.trvShortcuts2);
             this.Controls.Add(this.trvShortcuts);
             this.Controls.Add(this.lblStatus);
@@ -693,6 +729,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picRunDesktop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRunMyComputer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picC_Drive)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -763,6 +800,8 @@
         private System.Windows.Forms.ToolStripMenuItem miPomodoroTimer;
         private System.Windows.Forms.PictureBox picRunMyComputer;
         private System.Windows.Forms.ToolStripMenuItem cmiControlPanel;
+        private FlickerFreeTreeView trvShortcuts3;
+        private System.Windows.Forms.PictureBox picC_Drive;
     }
 }
 

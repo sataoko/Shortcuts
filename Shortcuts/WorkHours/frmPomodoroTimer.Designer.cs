@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPomodoroTimer));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblRemainingTime = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnLongBreak = new System.Windows.Forms.Button();
@@ -45,8 +44,9 @@
             this.cbBlockGroup = new System.Windows.Forms.ComboBox();
             this.sevenSegmentArray1 = new Shortcuts.SevenSegmentArray();
             this.sevenSegmentArray2 = new Shortcuts.SevenSegmentArray();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.lblColon = new System.Windows.Forms.Label();
+            this.lblShowWorkHours = new System.Windows.Forms.Label();
+            this.txtTotalTime = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,19 +54,6 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lblRemainingTime
-            // 
-            this.lblRemainingTime.AutoSize = true;
-            this.lblRemainingTime.BackColor = System.Drawing.Color.Transparent;
-            this.lblRemainingTime.Font = new System.Drawing.Font("TR Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblRemainingTime.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblRemainingTime.Location = new System.Drawing.Point(592, 80);
-            this.lblRemainingTime.Name = "lblRemainingTime";
-            this.lblRemainingTime.Size = new System.Drawing.Size(48, 18);
-            this.lblRemainingTime.TabIndex = 1;
-            this.lblRemainingTime.Text = "00:00";
-            this.lblRemainingTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnReset
             // 
@@ -174,7 +161,7 @@
             this.lblPomoCount.AutoSize = true;
             this.lblPomoCount.BackColor = System.Drawing.Color.Transparent;
             this.lblPomoCount.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblPomoCount.Location = new System.Drawing.Point(346, 350);
+            this.lblPomoCount.Location = new System.Drawing.Point(335, 352);
             this.lblPomoCount.Name = "lblPomoCount";
             this.lblPomoCount.Size = new System.Drawing.Size(22, 21);
             this.lblPomoCount.TabIndex = 4;
@@ -243,30 +230,45 @@
             this.sevenSegmentArray2.TabStop = false;
             this.sevenSegmentArray2.Value = "0000";
             // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblTotal.Location = new System.Drawing.Point(346, 395);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(22, 21);
-            this.lblTotal.TabIndex = 4;
-            this.lblTotal.Text = "...";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lblColon
             // 
             this.lblColon.AutoSize = true;
             this.lblColon.BackColor = System.Drawing.Color.Transparent;
-            this.lblColon.Font = new System.Drawing.Font("TR Arial Black", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblColon.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblColon.ForeColor = System.Drawing.Color.Black;
             this.lblColon.Location = new System.Drawing.Point(318, 190);
             this.lblColon.Name = "lblColon";
-            this.lblColon.Size = new System.Drawing.Size(89, 136);
+            this.lblColon.Size = new System.Drawing.Size(72, 108);
             this.lblColon.TabIndex = 1;
             this.lblColon.Text = ":";
             this.lblColon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblShowWorkHours
+            // 
+            this.lblShowWorkHours.AutoSize = true;
+            this.lblShowWorkHours.BackColor = System.Drawing.Color.Transparent;
+            this.lblShowWorkHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblShowWorkHours.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblShowWorkHours.Location = new System.Drawing.Point(185, 82);
+            this.lblShowWorkHours.Name = "lblShowWorkHours";
+            this.lblShowWorkHours.Size = new System.Drawing.Size(115, 16);
+            this.lblShowWorkHours.TabIndex = 1;
+            this.lblShowWorkHours.Text = "Show Work Hours";
+            this.lblShowWorkHours.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblShowWorkHours.Click += new System.EventHandler(this.lblShowWorkHours_Click);
+            // 
+            // txtTotalTime
+            // 
+            this.txtTotalTime.BackColor = System.Drawing.Color.White;
+            this.txtTotalTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotalTime.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalTime.Location = new System.Drawing.Point(157, 392);
+            this.txtTotalTime.Name = "txtTotalTime";
+            this.txtTotalTime.ReadOnly = true;
+            this.txtTotalTime.Size = new System.Drawing.Size(375, 20);
+            this.txtTotalTime.TabIndex = 8;
+            this.txtTotalTime.Text = "...";
+            this.txtTotalTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmPomodoroTimer
             // 
@@ -274,16 +276,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(700, 500);
+            this.Controls.Add(this.txtTotalTime);
             this.Controls.Add(this.sevenSegmentArray2);
             this.Controls.Add(this.sevenSegmentArray1);
             this.Controls.Add(this.cbBlockGroup);
             this.Controls.Add(this.txtBlockNote);
-            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblPomoCount);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.picClose);
             this.Controls.Add(this.lblColon);
-            this.Controls.Add(this.lblRemainingTime);
+            this.Controls.Add(this.lblShowWorkHours);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnLongBreak);
@@ -312,7 +314,6 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Label lblRemainingTime;
         private System.Windows.Forms.PictureBox picClose;
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Label lblPomoCount;
@@ -320,7 +321,8 @@
         private System.Windows.Forms.ComboBox cbBlockGroup;
         private SevenSegmentArray sevenSegmentArray1;
         private SevenSegmentArray sevenSegmentArray2;
-        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblColon;
+        private System.Windows.Forms.Label lblShowWorkHours;
+        private System.Windows.Forms.TextBox txtTotalTime;
     }
 }

@@ -14,6 +14,7 @@ namespace Shortcuts
     {
         ShortcutOperations _shortcutOperations1;
         ShortcutOperations _shortcutOperations2;
+        ShortcutOperations _shortcutOperations3;
         TreeNode sourceNode;
 
         int xOffset = 5;
@@ -79,12 +80,10 @@ namespace Shortcuts
 
         public frmMain()
         {
-
-
             this.ExcludeList += "trvShortcuts";
             this.ExcludeList += "trvShortcuts2";
+            this.ExcludeList += "trvShortcuts3";
             InitializeComponent();
-
         }
 
         // Form load event or a similar place
@@ -103,6 +102,7 @@ namespace Shortcuts
             this.BackColor = c;
             this.trvShortcuts.BackColor = c;
             this.trvShortcuts2.BackColor = c;
+            this.trvShortcuts3.BackColor = c;
 
             this.Show();
 
@@ -122,6 +122,11 @@ namespace Shortcuts
             trvShortcuts2.DragEnter += new DragEventHandler(trvShortcuts2_DragEnter);
             trvShortcuts2.DragDrop += new DragEventHandler(trvShortcuts2_DragDrop);
 
+
+            trvShortcuts3.AllowDrop = true;
+            trvShortcuts3.DragEnter += new DragEventHandler(trvShortcuts3_DragEnter);
+            trvShortcuts3.DragDrop += new DragEventHandler(trvShortcuts3_DragDrop);
+
             //ReadXMLShortcuts();
 
             _shortcutOperations1 = new ShortcutOperations(Application.StartupPath + "\\Shortcuts.xml");
@@ -129,6 +134,9 @@ namespace Shortcuts
 
             _shortcutOperations2 = new ShortcutOperations(Application.StartupPath + "\\Shortcuts2.xml");
             _shortcutOperations2.ReadXMLShortcuts(trvShortcuts2);
+
+            _shortcutOperations3 = new ShortcutOperations(Application.StartupPath + "\\Shortcuts3.xml");
+            _shortcutOperations3.ReadXMLShortcuts(trvShortcuts3);
 
             /*string bgFile = Application.StartupPath + "\\background.png";
             if (File.Exists(bgFile))
@@ -427,7 +435,7 @@ namespace Shortcuts
         public static bool IsValidHttpUri(string uriString)
         {
             Uri test = null;
-            return Uri.TryCreate(uriString, UriKind.Absolute, out test) && test.Scheme == "http";
+            return Uri.TryCreate(uriString, UriKind.Absolute, out test) && (test.Scheme == "http" || test.Scheme == "https");
             //return Uri.TryCreate(uriString, UriKind.RelativeOrAbsolute, out test);
         }
 
@@ -555,6 +563,49 @@ namespace Shortcuts
         }
 
         #endregion TREEVIEW METHODS 2
+
+        #region TREEVIEW METHODS 3
+        void trvShortcuts3_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                AddNewShortcutOnDragDrop(trvShortcuts3, e, _shortcutOperations3);
+            else
+            {
+                Point pos = trvShortcuts3.PointToClient(new Point(e.X, e.Y));
+                TreeNode targetNode = trvShortcuts3.GetNodeAt(pos);
+
+                if (targetNode != null)
+                {
+                    DataTreeNode node = (DataTreeNode)targetNode;
+                    string targetOrderNo = (node.Data as Shortcut).OrderNo;
+
+                    DataTreeNode node2 = (DataTreeNode)sourceNode;
+                    string sourceOrderNo = (node2.Data as Shortcut).OrderNo;
+
+                    _shortcutOperations3.UpdateNodeOrderNoByID((node.Data as Shortcut).ID, sourceOrderNo);
+                    _shortcutOperations3.UpdateNodeOrderNoByID((node2.Data as Shortcut).ID, targetOrderNo);
+                    _shortcutOperations3.ReadXMLShortcuts(trvShortcuts3);
+                }
+            }
+        }
+
+        void trvShortcuts3_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else if (e.Data.GetDataPresent(DataFormats.Text))
+                e.Effect = DragDropEffects.Move;
+            else
+                e.Effect = DragDropEffects.None; // Unknown data, ignore it
+        }
+
+        private void trvShortcuts3_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            sourceNode = (TreeNode)e.Item;
+            DoDragDrop(e.Item.ToString(), DragDropEffects.Move | DragDropEffects.Copy);
+        }
+
+        #endregion TREEVIEW METHODS 3
 
         private void RemoveShortcutFromTree(TreeView targetTreeView, ShortcutOperations shortcutOperations)
         {
@@ -862,6 +913,11 @@ namespace Shortcuts
         private void picSnippingTool_Click(object sender, EventArgs e)
         {
             RunProcess("SnippingTool.exe",true);
+        }
+
+        private void picC_Drive_Click(object sender, EventArgs e)
+        {
+            RunTargetFile("C:\\");
         }
 
         private void cmiServices_Click(object sender, EventArgs e)
